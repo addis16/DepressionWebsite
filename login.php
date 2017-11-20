@@ -8,6 +8,7 @@
 
 <body>
 <?php
+$array = array();
 $avatar = "";
 $error = "";    
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -15,10 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "You need a name";
     }
     else{
-        $name = test_input($_POST["avatar"]);
+        $avatar = test_input($_POST["avatar"]);
         if(!preg_match("/^[a-zA-Z1-999]*$/",$avatar)){
-            $error = "Only Letters and Spaces"
-            } 
+            $error = "Only Letters, numbers and Spaces";
+            }
+        else
         }
     }
 }    
@@ -27,9 +29,13 @@ function test_input($data) {
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
+}
+function storeUsers($data){
+    
+    array_push($array, $data);
 }    
-echo "<h1>YO<h1>";
+echo "<h1>YO</h1>";
 echo $_POST["avatar"]; 
-?>.    
+?>!    
 </body>
 </html>
